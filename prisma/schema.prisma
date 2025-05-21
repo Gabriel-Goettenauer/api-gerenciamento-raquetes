@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // Mantenha "postgresql" se você está usando PostgreSQL no Docker
+  url      = env("DATABASE_URL")
+}
+
+model Racket {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique // O nome da raquete deve ser único
+  brand     String
+  weight    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Este modelo User será importante para o RA5 (autenticação), mas já o definiremos agora.
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String // A senha será armazenada com hash no futuro (RA5)
+  roles     String[] // Array de strings para armazenar roles (ex: "admin", "user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
