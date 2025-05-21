@@ -23,8 +23,7 @@ model Racket {
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
-  password  String // A senha será armazenada com hash no futuro (RA5)
-  roles     String[] // Array de strings para armazenar roles (ex: "admin", "user")
+  password  String   // Senha hashada
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

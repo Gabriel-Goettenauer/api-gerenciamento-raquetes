@@ -1,5 +1,5 @@
-import { PartialType } from '@nestjs/swagger'; // Para o Swagger e tornar DTO opcional
-import { CreateRacketDto } from './create-racket.dto'; // Importação direta do DTO base
+import { PartialType } from '@nestjs/swagger'; 
+import { CreateRacketDto } from './create-racket.dto'; 
 
-// PartialType torna todas as propriedades de CreateRacketDto opcionais
+
 export class UpdateRacketDto extends PartialType(CreateRacketDto) {}

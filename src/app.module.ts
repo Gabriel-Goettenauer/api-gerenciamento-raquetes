@@ -1,28 +1,30 @@
-// src/app.module.ts
-import { Module } from '@nestjs/common';
+
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { RacketsController } from './rackets.controller';
+import { RacketsService } from './rackets.service';
+import { PrismaService } from './prisma.service';
 import { ConfigModule } from '@nestjs/config';
-import { RacketsModule } from './rackets.module';
-import { PrismaModule } from './prisma.module'; // <<<< Adicione esta importação
-import { APP_FILTER } from '@nestjs/core';
-import { AllExceptionsFilter } from './all-exceptions.filter';
+import { AuthModule } from './auth.module';
+import { LoggingMiddleware } from './logging.middleware'; 
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: `.env.${process.env.NODE_ENV || 'development'}`,
     }),
-    PrismaModule, // <<<< Importe o PrismaModule aqui. Como ele é @Global(), já estará disponível.
-    RacketsModule, // Importa o RacketsModule
+    AuthModule,
   ],
-  controllers: [],
-  providers: [
-    {
-      provide: APP_FILTER,
-      useClass: AllExceptionsFilter,
-    },
-  ],
-  // NÃO PRECISA MAIS EXPORTAR O PrismaService AQUI, pois o PrismaModule já o exporta globalmente
-  // exports: [PrismaService], // REMOVA esta linha
+  controllers: [AppController, RacketsController],
+  providers: [AppService, RacketsService, PrismaService],
 })
-export class AppModule {}
+
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggingMiddleware) 
+      .forRoutes('*'); 
+                      
+  }
+}

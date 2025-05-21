@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { RacketsService } from './rackets.service'; // Está na mesma pasta 'src/'
-import { PrismaService } from './prisma.service'; // <<<<<<< Ajustado: Caminho direto para 'src/prisma.service.ts'
+import { RacketsService } from './rackets.service'; 
+import { PrismaService } from './prisma.service'; 
 
 describe('RacketsService', () => {
   let service: RacketsService;

@@ -1,4 +1,4 @@
-// src/rackets.controller.spec.ts
+
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
@@ -7,7 +7,6 @@ import { PrismaService } from './prisma.service';
 import { AllExceptionsFilter } from './all-exceptions.filter';
 import { HttpAdapterHost } from '@nestjs/core';
 
-// Definimos um mock para o PrismaService
 const mockPrismaService = {
   racket: {
     findMany: jest.fn(),

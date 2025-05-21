@@ -10,17 +10,7 @@ export type Racket = PrismaRacket;
 
 @Injectable()
 export class RacketsService {
-  // <<<< CONSTRUTOR ALTERADO PARA INJETAR ConfigService
   constructor(private prisma: PrismaService, private configService: ConfigService) {
-    // Exemplo de como acessar uma variável de ambiente.
-    // Para testar, você pode adicionar uma variável no seu arquivo .env, por exemplo:
-    // API_DESCRIPTION="Minha API de Raquetes"
-    // E descomentar a linha abaixo para ver no console.
-    // console.log('API Description from .env:', this.configService.get<string>('API_DESCRIPTION'));
-
-    // Outros exemplos de acesso a variáveis de ambiente já existentes:
-    // console.log('Database URL:', this.configService.get<string>('DATABASE_URL'));
-    // console.log('Node Env:', this.configService.get<string>('NODE_ENV'));
   }
 
   async create(createRacketDto: CreateRacketDto): Promise<Racket> {

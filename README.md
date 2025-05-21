@@ -1,98 +1,146 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# API de Gerenciamento de Raquetes de Beach Tennis
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+---
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Identificação do Autor
 
-## Description
+**Nome Completo do Aluno:** Gabriel Goettenauer da Silva Almeida
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Project setup
+## Descrição do Projeto
 
-```bash
-$ npm install
-```
+Esta API RESTful é uma aplicação robusta e segura, desenvolvida com o **NestJS**, um framework progressivo de Node.js. Ela foi criada para gerenciar informações de raquetes de beach tennis, oferecendo um conjunto completo de operações CRUD (Create, Read, Update, Delete).
 
-## Compile and run the project
+Além das funcionalidades básicas de gerenciamento de dados, a API incorpora recursos avançados de segurança e observabilidade:
 
-```bash
-# development
-$ npm run start
+* **Autenticação JWT:** Sistema completo de registro e login de usuários com JSON Web Tokens para garantir acesso seguro.
+* **Controle de Acesso com Guards:** Proteção de rotas utilizando Guards do NestJS, exigindo autenticação para acessar endpoints sensíveis.
+* **Middleware:** Implementação de um middleware de logging para monitorar requisições.
+* **Interceptadores:** Transformação de respostas da API para adicionar informações úteis, como timestamps.
+* **Persistência de Dados:** Utiliza **Prisma** como ORM para interagir com um banco de dados relacional.
+* **Validação de Dados:** Garante a integridade dos dados através de DTOs e Pipes de validação.
+* **Tratamento de Erros:** Um filtro de exceções global para respostas de erro padronizadas.
+* **Documentação Interativa:** Geração automática de documentação com Swagger UI.
+* **Versionamento de API:** Suporte para diferentes versões da API.
 
-# watch mode
-$ npm run start:dev
+---
 
-# production mode
-$ npm run start:prod
-```
+## Link para a API em Produção
 
-## Run tests
+**URL da API Publicada:** `[ ]`
 
-```bash
-# unit tests
-$ npm run test
+---
 
-# e2e tests
-$ npm run test:e2e
+## Instruções de Execução Local
 
-# test coverage
-$ npm run test:cov
-```
+Siga os passos abaixo para configurar e executar a API em seu ambiente de desenvolvimento.
 
-## Deployment
+### Pré-requisitos
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Certifique-se de ter as seguintes ferramentas instaladas:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+* **Node.js:** Versão 18.x ou superior (recomendado 20.x)
+* **NPM (Node Package Manager):** Versão 9.x ou superior
+* **Git:** Para clonar o repositório
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+### Instalação
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+1.  Clone este repositório:
+    ```bash
+    git clone https://github.com/Gabriel-Goettenauer/api-gerenciamento-raquetes.git
+    cd 
+    ```
+2.  Instale as dependências do projeto:
+    ```bash
+    npm install
+    ```
 
-## Resources
+### Configuração do Banco de Dados
 
-Check out a few resources that may come in handy when working with NestJS:
+Esta API utiliza **Prisma** para gerenciar a persistência de dados.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+1.  Crie um arquivo `.env` na raiz do projeto (na mesma pasta do `package.json`).
+2.  Adicione as seguintes variáveis de ambiente, configurando a `DATABASE_URL` de acordo com seu banco de dados:
 
-## Support
+    ```
+    DATABASE_URL="file:./dev.db" # Exemplo para SQLite (recomendado para dev local)
+    # Ou para PostgreSQL: DATABASE_URL="postgresql://user:password@host:port/database?schema=public"
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+    JWT_SECRET="sua_chave_secreta_super_forte_e_aleatoria_aqui" # Use uma string longa e aleatória
+    ```
 
-## Stay in touch
+3.  Execute as migrações do Prisma para criar o schema do banco de dados:
+    ```bash
+    npx prisma migrate dev --name initial_schema
+    ```
+    * Siga as instruções no terminal. Se for a primeira vez, o Prisma criará as tabelas `User` e `Racket`.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Execução da API
 
-## License
+1.  Para iniciar a API em modo de desenvolvimento (com *hot-reload*):
+    ```bash
+    npm run start:dev
+    ```
+2.  A API estará acessível em `http://localhost:3000`.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+
+## Documentação da API
+
+A documentação interativa da API, gerada com **Swagger UI**, está disponível no seguinte link quando a API estiver rodando localmente ou em produção:
+
+**URL da Documentação Swagger:** `http://localhost:3000/api`
+
+---
+
+## Diagrama de Entidade-Relacionamento (ERD)
+
+O modelo de dados da aplicação é definido no arquivo `prisma/schema.prisma`. As principais entidades são `User` (para autenticação) e `Racket` (para o gerenciamento de raquetes).
+
+* *Dica:* Ferramentas como a extensão do Prisma para VS Code podem ajudar a gerar um ERD visual a partir do seu `schema.prisma`.
+
+---
+
+## Checklist de Funcionalidades Concluídas
+
+Esta seção detalha as funcionalidades implementadas de acordo com os Requisitos de Aprendizagem (RAs) e Indicadores de Desempenho (IDs).
+
+### RA1 - Projetar e desenvolver uma API funcional utilizando o framework NestJS.
+
+* [x] **ID1:** Configuração do ambiente e arquitetura modular (rotas, controladores).
+* [x] **ID2:** Boas práticas na organização da lógica de negócios (services).
+* [x] **ID3:** Uso de providers e Injeção de Dependência.
+* [x] **ID4:** Manipulação de rotas HTTP (parâmetros, query, body).
+* [x] **ID5:** Tratamento de erros com filtros globais.
+* [x] **ID6:** Criação de DTOs para validação de dados.
+* [x] **ID7:** Aplicação de pipes de validação.
+
+### RA2 - Implementar persistência de dados com um banco de dados relacional utilizando Prisma.
+
+* [x] **ID8:** Modelagem de dados (entidades, relações no `schema.prisma`).
+* [x] **ID9:** Conexão a banco de dados relacional via Prisma.
+* [x] **ID10:** Criação e aplicação de migrações de banco de dados.
+* [x] **ID11:** Implementação de operações CRUD para a entidade `Racket`.
+
+### RA3 - Realizar testes automatizados para garantir a qualidade da API.
+
+* [x] **ID12:** Implementação de testes automatizados (unitários/integração com Jest).
+* [x] **ID13:** Cobertura de testes para rotas e serviços principais (CRUD).
+
+### RA4 - Gerar a documentação da API e realizar o deploy em um ambiente de produção.
+
+* [x] **ID14:** Integração e geração de documentação Swagger.
+* [ ] **ID15:** Realização do deploy da API em plataforma de nuvem.
+* [ ] **ID16:** Funcionamento correto da API em ambiente de produção (incluindo Swagger e DB).
+* [x] **ID17:** Configuração de variáveis de ambiente com `ConfigModule`.
+* [x] **ID18:** Implementação de versionamento de APIs REST (`v1`).
+
+### RA5 - Implementar autenticação, autorização e segurança em APIs utilizando JWT, Guards, Middleware e Interceptadores.
+
+* [x] **ID19:** Configuração da autenticação com JWT.
+* [x] **ID20:** Implementação de controle de acesso com Guards.
+* [x] **ID21:** Configuração e utilização de Middleware (logging).
+* [x] **ID22:** Implementação de Interceptadores (transformação de resposta).
+
+---
