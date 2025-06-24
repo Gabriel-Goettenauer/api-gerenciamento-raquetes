@@ -5,13 +5,13 @@ import { RegisterDto } from './register.dto';
 import { LoginDto } from './login.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 
-@ApiTags('auth')
-@Controller('auth')
+@ApiTags('auth')//2
+@Controller('auth')//1
 
-export class AuthController {
+export class AuthController {//3
   constructor(private authService: AuthService) {}
 
-  @Post('register')
+  @Post('register')//4
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Registra um novo usuário' })
   @ApiResponse({ status: 201, description: 'Usuário registrado com sucesso.' })
@@ -21,7 +21,7 @@ export class AuthController {
     return this.authService.register(registerDto.email, registerDto.password);
   }
 
-  @Post('login')
+  @Post('login')//5
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Faz login de um usuário e retorna um JWT' })
   @ApiResponse({ status: 200, description: 'Login bem-sucedido.', schema: { example: { access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...' } } })

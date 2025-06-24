@@ -1,4 +1,3 @@
-
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -11,13 +10,13 @@ import { LoggingMiddleware } from './logging.middleware';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
+    ConfigModule.forRoot({//1
       isGlobal: true,
     }),
-    AuthModule,
+    AuthModule,//2
   ],
-  controllers: [AppController, RacketsController],
-  providers: [AppService, RacketsService, PrismaService],
+  controllers: [AppController, RacketsController],//3
+  providers: [AppService, RacketsService, PrismaService],//4
 })
 
 export class AppModule implements NestModule {

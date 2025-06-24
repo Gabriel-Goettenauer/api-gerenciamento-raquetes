@@ -6,20 +6,20 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql" // Mantenha "postgresql" se você está usando PostgreSQL no Docker
+  provider = "postgresql" 
   url      = env("DATABASE_URL")
 }
 
 model Racket {
   id        Int      @id @default(autoincrement())
-  name      String   @unique // O nome da raquete deve ser único
+  name      String   @unique 
   brand     String
   weight    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-// Este modelo User será importante para o RA5 (autenticação), mas já o definiremos agora.
+
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique

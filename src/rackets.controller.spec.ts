@@ -7,7 +7,7 @@ import { PrismaService } from './prisma.service';
 import { AllExceptionsFilter } from './all-exceptions.filter';
 import { HttpAdapterHost } from '@nestjs/core';
 
-const mockPrismaService = {
+const mockPrismaService = {//1
   racket: {
     findMany: jest.fn(),
     findUnique: jest.fn(),
@@ -24,7 +24,7 @@ describe('RacketsController (e2e)', () => {
   let app: INestApplication;
   let prismaService: PrismaService;
 
-  beforeAll(async () => {
+  beforeAll(async () => {//2
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     })
@@ -62,7 +62,7 @@ describe('RacketsController (e2e)', () => {
   });
 
   describe('/v1/rackets (POST)', () => {
-    beforeEach(() => {
+    beforeEach(() => {//3
         jest.clearAllMocks();
     });
 
@@ -89,13 +89,11 @@ describe('RacketsController (e2e)', () => {
     it('should return 400 for invalid input', () => {
       return request(app.getHttpServer())
         .post('/v1/rackets')
-        // >>>>> ESTA LINHA FOI ALTERADA (name: 'Sh') <<<<<
-        .send({ name: 'Sh', brand: '', weight: 'not-a-number' }) // Mude 'Short' para 'Sh' (menos de 5 caracteres)
+        .send({ name: 'Sh', brand: '', weight: 'not-a-number' }) 
         .expect(400)
         .expect((res) => {
           expect(res.body.message).toEqual(expect.arrayContaining([
-            // >>>>> ESTA MENSAGEM FOI ATUALIZADA <<<<<
-            'O nome da raquete deve ter no mínimo 5 caracteres.', // Nova mensagem em português
+            'O nome da raquete deve ter no mínimo 5 caracteres.', 
             'A marca da raquete não pode ser vazia.',
             'O peso da raquete deve ser um número.',
             'O peso da raquete deve ser um valor positivo.',
@@ -124,8 +122,8 @@ describe('RacketsController (e2e)', () => {
       });
   });
 
-  describe('/v1/rackets (GET)', () => {
-    beforeEach(() => {
+  describe('/v1/rackets (GET)', () => {//4
+    beforeEach(() => {//3
       jest.clearAllMocks();
       (prismaService.racket.findMany as jest.Mock).mockResolvedValue([
         { id: 1, name: 'Racket Get 1', brand: 'Brand G1', weight: 300 },

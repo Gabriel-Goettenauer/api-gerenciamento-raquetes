@@ -5,15 +5,15 @@ import {
   UnauthorizedException,
   InternalServerErrorException,
 } from '@nestjs/common';
-import { PrismaService } from './prisma.service'; // <<<< AJUSTADO
+import { PrismaService } from './prisma.service'; 
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 
-@Injectable()
+@Injectable()//1
 export class AuthService {
   constructor(private prisma: PrismaService, private jwtService: JwtService) {}
 
-  async register(email: string, password: string) {
+  async register(email: string, password: string) {//2
     const existingUser = await this.prisma.user.findUnique({ where: { email } });
     if (existingUser) {
       throw new ConflictException('O email já está em uso.');
@@ -35,7 +35,7 @@ export class AuthService {
     }
   }
 
-  async login(email: string, password: string) {
+  async login(email: string, password: string) {//3
     const user = await this.prisma.user.findUnique({ where: { email } });
     if (!user) {
       throw new UnauthorizedException('Credenciais inválidas.');
@@ -52,7 +52,7 @@ export class AuthService {
     };
   }
 
-  async validateUser(email: string) {
+  async validateUser(email: string) {//4
     const user = await this.prisma.user.findUnique({ where: { email } });
     if (!user) {
       return null;

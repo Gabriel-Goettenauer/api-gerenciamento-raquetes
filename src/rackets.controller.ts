@@ -38,11 +38,11 @@ const ConflictErrorExample = {
 
 
 @ApiTags('rackets')
-@Controller('rackets')
+@Controller('rackets')//1
 export class RacketsController {
-  constructor(private readonly racketsService: RacketsService) {}
+  constructor(private readonly racketsService: RacketsService) {}//2
 
-  @Post()
+  @Post()//3
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Cria uma nova raquete de beach tennis' })
   @ApiResponse({
@@ -137,7 +137,7 @@ export class RacketsController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  @ApiOperation({ summary: 'Remove uma raquete de beach tennis' })
+  @ApiOperation({ summary: 'Remove uma raquete de beach tennis' })//4
   @ApiResponse({ status: 204, description: 'Raquete removida com sucesso.' })
   @ApiResponse({
     status: 404,

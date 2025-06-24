@@ -1,19 +1,18 @@
-// src/rackets.service.ts
 import { Injectable, NotFoundException, ConflictException, InternalServerErrorException } from '@nestjs/common';
 import { CreateRacketDto } from './create-racket.dto';
 import { UpdateRacketDto } from './update-racket.dto';
 import { PrismaService } from './prisma.service';
 import { Racket as PrismaRacket } from '@prisma/client';
-import { ConfigService } from '@nestjs/config'; // <<<< IMPORTAR ConfigService
+import { ConfigService } from '@nestjs/config'; 
 
 export type Racket = PrismaRacket;
 
 @Injectable()
-export class RacketsService {
+export class RacketsService {//1
   constructor(private prisma: PrismaService, private configService: ConfigService) {
   }
 
-  async create(createRacketDto: CreateRacketDto): Promise<Racket> {
+  async create(createRacketDto: CreateRacketDto): Promise<Racket> {//2
     try {
       return await this.prisma.racket.create({
         data: createRacketDto,
@@ -26,11 +25,11 @@ export class RacketsService {
     }
   }
 
-  async findAll(): Promise<Racket[]> {
+  async findAll(): Promise<Racket[]> {//3
     return this.prisma.racket.findMany();
   }
 
-  async findOne(id: number): Promise<Racket> {
+  async findOne(id: number): Promise<Racket> {//4
     const racket = await this.prisma.racket.findUnique({
       where: { id },
     });
@@ -40,7 +39,7 @@ export class RacketsService {
     return racket;
   }
 
-  async update(id: number, updateRacketDto: UpdateRacketDto): Promise<Racket> {
+  async update(id: number, updateRacketDto: UpdateRacketDto): Promise<Racket> {//5
     const existingRacket = await this.findOne(id);
 
     try {
@@ -56,7 +55,7 @@ export class RacketsService {
     }
   }
 
-  async remove(id: number): Promise<Racket> {
+  async remove(id: number): Promise<Racket> {//6
     const existingRacket = await this.findOne(id);
 
     return await this.prisma.racket.delete({
